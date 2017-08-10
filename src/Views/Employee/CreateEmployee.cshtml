@@ -1,0 +1,92 @@
+@model DataAnnotationValidation.ViewModels.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Data Annotation Model Validation Example";
+}
+
+<form asp-controller="Employee" asp-action="Save" method="post" class="form-horizontal">
+    
+    <h4>Create a new Employee</h4>
+    <hr />
+    
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Partial("_ValidationSummary", ViewData.ModelState)
+        </div>
+    </div>
+    
+    <div class="form-group required">
+        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="LastName" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label asp-for="Address" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Address" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label asp-for="DepartmentCode" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="DepartmentCode" class="form-control" />
+            <span asp-validation-for="DepartmentCode" class="text-danger" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EmployeeNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="EmployeeNumber" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label asp-for="Age" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Age" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label asp-for="Status" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="Status" class="form-control">
+                <option value="">Please select a status</option>
+                <option value="1">Full Time</option>
+                <option value="2">Part Time</option>
+                <option value="3">Retired</option>
+                <option value="4">Deceased</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="~/" class="btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+</form>
+
+@section scripts {
+    <script src="~/js/allowed-department-codes.js" asp-append-version="true"></script>
+}

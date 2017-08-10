@@ -1,0 +1,126 @@
+@model DataAnnotationValidation.ViewModels.EmployeeTestViewModel
+
+@{
+    ViewBag.Title = "Validate a Model";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="~/">Home</a></li>
+            <li class="active">Model State Errors</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <div class="alert alert-warning" role="alert">
+            NOTE:  On this page validation of the model is only performed on the server side.  Client side validation is not being performed.
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-controller="Employee" asp-action="ValidateModel" method="post" class="form-horizontal">
+            
+            <div class="form-group">
+                <label for="FirstName" class="col-md-2 control-label">First Name</label>
+                <div class="col-md-10">
+                    <input asp-for="FirstName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="LastName" class="col-md-2 control-label">Last Name</label>
+                <div class="col-md-10">
+                    <input asp-for="LastName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Address" class="col-md-2 control-label">Address</label>
+                <div class="col-md-10">
+                    <input asp-for="Address" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="DepartmentCode" class="col-md-2 control-label">Department Code</label>
+                <div class="col-md-10">
+                    <input asp-for="DepartmentCode" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="EmployeeNumber" class="col-md-2 control-label">Employee Number</label>
+                <div class="col-md-10">
+                    <input asp-for="EmployeeNumber" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Age" class="col-md-2 control-label">Age</label>
+                <div class="col-md-10">
+                    <input asp-for="Age" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Status" class="col-md-2 control-label">Status</label>
+                <div class="col-md-10">
+                    <select asp-for="Status" class="form-control">
+                        <option value="0">Please select a status</option>
+                        <option value="1">Full Time</option>
+                        <option value="2">Part Time</option>
+                        <option value="3">Retired</option>
+                        <option value="4">Deceased</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Description" class="col-md-2 control-label">Description</label>
+                <div class="col-md-10">
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <button id="buttonClicked" name="buttonClicked" type="submit" class="btn btn-primary" value="TryValidateModel">Controller.TryValidateModel()</button>
+                    &nbsp;&nbsp;
+                    <button id="buttonClicked" name="buttonClicked" type="submit" class="btn btn-primary" value="TryValidateObject">Validator.TryValidateObject()</button>
+                    <br /><br />
+                    <button id="buttonClicked" name="buttonClicked" type="submit" class="btn btn-primary" value="TryValidateProperty">
+                        Validator.TryValidateProperty() on the First Name</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <h4>@ViewBag.ValidationType</h4>
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <ul>
+                    @foreach (var error in ViewBag.Errors)
+                    {
+                        <li> @error </li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>

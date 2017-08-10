@@ -1,0 +1,16 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding;
+@model ModelStateDictionary
+
+<div id="ValidationSummary" class='@(Html.ViewData.ModelState.IsValid ? "validation-summary-valid" : "validation-summary-errors")' data-valmsg-summary="true">
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Opps, something went wrong!
+        <br />
+        <ul>
+            @foreach (var modelError in Model.SelectMany(keyValuePair => keyValuePair.Value.Errors))
+            {
+                <li>@modelError.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+@{
+    ViewBag.Title = "Data Validation with Annotations";
+}
+
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>
+            <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+            Data Annotation Examples
+        </h4>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div style="margin-left: 25px;">
+
+            Validate form data that is sent to a controller by using:
+            
+            <ul>
+                <li><a href="~/Employee/New">ModelState.IsValid()</a></li>
+            </ul> 
+
+            Three other options to validate a model:
+
+            <ul>
+                <li><a href="~/Employee/ModelTest">Controller.TryValidateModel()</a></li>
+                <li><a href="~/Employee/ModelTest">Validator.TryValidateObject()</a></li>
+                <li><a href="~/Employee/ModelTest">Validator.TryValidateProperty()</a></li>
+            </ul> 
+
+        </div>
+
+    </div>
+</div>
